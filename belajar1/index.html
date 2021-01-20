@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar VueJS 1</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{content}}</h2>
+        <p>Masukan Nama Anda <input type="text" name="nama" v-model='nama'></p>
+        <h3>{{nama}}</h3>
+    </div>
+    
+
+    <!-- memasukan library Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- memasukan library Vue -->
+
+    <script>
+        var app=new Vue({
+            el: '#app',
+            data: {
+                content: 'Selamat Datang Di Vue JS',
+                nama : 'Rudy'
+            }
+        });
+    </script>
+</body>
+</html>
