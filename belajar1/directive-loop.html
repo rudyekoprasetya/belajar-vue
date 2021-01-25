@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directive Loop</title>
+</head>
+<body>
+    <div id="app">
+        <h3>Daftar Barang</h3>
+        <ul>
+            <li v-for="item in listBarang">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+<!-- memasukan library Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<!-- memasukan library Vue -->
+</body>
+</html>
+<script>
+var app=new Vue({
+    el: '#app',
+    data: {
+        listBarang: ["Baju", "Celana", "Sepatu", "Topi"]
+    }
+});
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directive Conditional</title>
+</head>
+<body>
+    <div id="app">
+        <p>Nama Barang : <b>Buku Panduan VueJS</b></p>
+        <p>Harga Barang : <b>45.000</b></p>
+        <p>Qty : <input type="text" v-model="qty"></p>
+        <hr>
+        <p v-if="qty >= 10">Maaf Stok kami terbatas, hanya 10</p>
+        <p v-else-if="qty >= 3">Selamat Anda dapat diskon</p>
+        <p v-else>Beli lebih banyak lagi untuk dapatkan diskon</p>
+    </div>
+    
+
+    <!-- memasukan library Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- memasukan library Vue -->
+</body>
+</html>
+<script>
+    var app=new Vue({
+        el: '#app',
+        data: {
+            harga: 45000,
+            qty: 1
+        }
+    });
+</script>

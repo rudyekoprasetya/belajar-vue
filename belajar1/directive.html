@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Directive VueJS</title>
+</head>
+<body>
+    <div id="app">
+        <p>Judul</p>
+        <p><input type="text" v-bind:value="judul"></p>
+        <p>Buat Konten</p>
+        <p><textarea rows="4" v-model="isi"></textarea></p>
+        <hr>
+        <h1 v-text="judul"></h1>
+        <hr>
+        <div v-html="isi"></div>
+        <hr>
+        <p>Konten dalam plain text:</p>
+        <div v-text="isi"></div>
+        <hr>
+        <p>Yang ini cuma di-render sekali:</p>
+        <div v-once>{{ isi }}</div>
+        </p>
+    </div>
+
+    <!-- memasukan library Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- memasukan library Vue -->
+</body>
+</html>
+
+<script>
+    var app=new Vue({
+        el: '#app',
+        data: {
+            judul: 'Blog Vue Rudy',
+            isi: '<b> Ini adalah artikel penduan vue JS</b>'
+        }
+    });
+</script>

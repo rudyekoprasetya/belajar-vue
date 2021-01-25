@@ -25,24 +25,22 @@
         </div>
       </nav>
     <div class="container mt-4" id="app">
-      <h2>Belajar Vue JS dengan bootstrap</h2>
-
-      <div class="mb-3">
-        <label for="angka1" class="form-label">Angka 1</label>
-        <input type="text" class="form-control" v-model="angka1" name="angka1">
-      </div>
-
-      <div class="mb-3">
-        <label for="angka2" class="form-label">Angka 2</label>
-        <input type="text" class="form-control" v-model="angka2" name="angka2">
-      </div>
-
-      <p><button class="btn btn-danger btn-lg" v-on:click="tambah">Tambah</button> <button class="btn btn-warning btn-lg" @click="kali">Kali</button> <button class="btn btn-success btn-lg" @click="bagi">Bagi</button> <button class="btn btn-primary btn-lg" @click="kurang">Kurang</button></p>
-
+      <h2>Agenda Kegiatan Hari ini!</h2>
       <hr>
-
-      <h3>Hasilnya adalah {{hasil}}</h3>
-
+        <div class="mb-3">
+          <label for="todo" class="form-label">Agenda Anda</label>
+          <input type="text" class="form-control" id="todo" placeholder="Masukan Nama Agenda" v-model="todo">
+          <p><button class="btn btn-primary btn-small" @click="addAgenda">Tambah</button></p>
+        </div>   
+      <hr>
+      <ul>
+          <li v-for="(item, index) in agenda">
+              <!-- coret jika sudah selesai -->
+              <s v-if="item.selesai">{{item.tugas}}</s>
+              <!-- jika belum di bold, klik agenda untuk merubah status -->
+              <b v-else @click="doneAgenda(index)">{{item.tugas}}</b>
+          </li>
+      </ul>
     </div>    
 
     <!-- bootstrap -->
@@ -55,32 +53,26 @@
         var app=new Vue({
             el: '#app',
             data: {
-                angka1: '0',
-                angka2: '0',
-                hasil: '0'
+                todo: '',
+                agenda: [
+                    {tugas: 'Mandi', selesai: true},
+                    {tugas: 'Sarapan', selesai: false},
+                    {tugas: 'Belajar Vue JS', selesai: false}
+                ]
             },
-
-            // computed: {
-            //     hasil: function() {
-            //         return parseInt(this.angka1)+parseInt(this.angka2);
-            //     }
-            // },
             methods: {
-                tambah: function() {
-                    this.hasil=parseInt(this.angka1)+parseInt(this.angka2);
+                // menambahkan data ke array
+                addAgenda: function() {
+                    this.agenda.push({tugas: this.todo, selesai: false});
+                    //kosongkan form jika sudah input
+                    this.todo="";
                 },
-                kali: function() {
-                    this.hasil=parseInt(this.angka1)*parseInt(this.angka2);
-                },
-                bagi: function() {
-                    this.hasil=parseInt(this.angka1)/parseInt(this.angka2);
-                },
-                kurang: function() {
-                    this.hasil=parseInt(this.angka1)-parseInt(this.angka2);
+                // merubah status sesuai dengan index yang dipilih
+                doneAgenda: function(index) {
+                    this.agenda[index].selesai=true;
                 }
-            }
+            } 
         });
     </script>
-
 </body>
 </html>
